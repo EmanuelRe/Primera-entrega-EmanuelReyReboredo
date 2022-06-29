@@ -80,6 +80,9 @@ def buscar(request):
 
     if request.GET['resultado']:
 
+        resultado = request.GET["resultado"]
+        print(resultado)
+
         mascotas = mascotas.objects.filter(productos__icontains=mascotas)
         print(mascotas)
     
