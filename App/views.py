@@ -45,7 +45,7 @@ def dueños(request):
             info = miFormulario.cleaned_data
             print(info)
 
-            dueño = Mascotas(nombre=info['nombre'], apellido=info['apellido'], DNI=info['DNI'],mascota=info["mascota"])
+            dueño = Dueños(nombre=info['nombre'], apellido=info['apellido'], DNI=info['DNI'],mascota=info["mascota"])
             dueño.save()
 
             return render(request, "App/inicio.html")
@@ -78,12 +78,12 @@ def encargados(request):
 
 def buscar(request):
 
-    if request.GET['resultado']:
+    if request.GET['animal']:
 
-        resultado = request.GET["resultado"]
-        print(resultado)
+        animal = request.GET["animal"]
+        print(animal)
 
-        mascotas = mascotas.objects.filter(productos__icontains=mascotas)
+        mascotas = mascotas.objects.filter(animal__icontains=animal)
         print(mascotas)
     
         return render(request, "App/inicio.html", {"mascotas":mascotas.values,"prd":mascotas})
