@@ -83,10 +83,10 @@ def buscar(request):
         animal = request.GET["animal"]
         print(animal)
 
-        mascotas = mascotas.objects.filter(animal__icontains=animal)
+        mascotas = Mascotas.objects.filter(animal__icontains=animal)
         print(mascotas)
     
-        return render(request, "App/inicio.html", {"mascotas":mascotas.values,"prd":mascotas})
+        return render(request, "App/inicio.html", {"mascotas":mascotas.values(),"prd":mascotas.values()})
     
     else:
 
